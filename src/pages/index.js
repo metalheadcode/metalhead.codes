@@ -48,10 +48,12 @@ const Title = styled.h1`
   font-size: 32px;
   color: #f3f0e8;
   line-height: 130%;
+  margin: 0;
 `
 const Description = styled.p`
   line-height: 130%;
   color: #f3f0e8;
+  margin: 0;
 `
 
 const Button = styled(props => <Link {...props} />)`
