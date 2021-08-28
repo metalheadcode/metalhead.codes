@@ -8,7 +8,7 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
+import styled from "styled-components"
 import Header from "./header"
 import "./layout.css"
 
@@ -24,12 +24,10 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <Wrapper>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div>
-        <main>{children}</main>
-      </div>
-    </>
+      <main>{children}</main>
+    </Wrapper>
   )
 }
 
@@ -38,3 +36,8 @@ Layout.propTypes = {
 }
 
 export default Layout
+
+const Wrapper = styled.div`
+  max-width: 1028px;
+  margin: auto;
+`
