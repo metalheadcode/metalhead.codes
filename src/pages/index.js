@@ -6,7 +6,7 @@ import HeroesTwo from "../components/Heroes/HeroesTwo"
 
 const IndexPage = () => (
   <Layout>
-    <Seo title="🏠" />
+    <Seo title="Home" />
     <HeroesOne />
     <HeroesTwo />
   </Layout>
