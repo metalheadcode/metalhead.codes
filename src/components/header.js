@@ -3,19 +3,37 @@ import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import SpeacialHeader from "./Header/SpeacialHeader"
+import { useSwitch } from "../hooks/useSwitch"
 
-const Header = ({ siteTitle }) => (
-  <>
-    <BgHeader />
-    <RowHeader>
-      <Logo>
-        <Link to="/">{siteTitle}</Link>
-      </Logo>
-      <Menu>M</Menu>
-    </RowHeader>
-    <SpeacialHeader />
-  </>
-)
+const Header = ({ siteTitle }) => {
+  const { isOpen, open, close } = useSwitch()
+  const [disabled, setDisabled] = React.useState(false)
+  const handleClick = () => {
+    setDisabled(true)
+    if (isOpen === false) {
+      open()
+    } else {
+      close()
+    }
+    setTimeout(() => setDisabled(false), 1000)
+  }
+
+  console.log(isOpen)
+  return (
+    <>
+      <BgHeader />
+      <RowHeader>
+        <Logo>
+          <Link to="/">{siteTitle}</Link>
+        </Logo>
+        <Menu onClick={handleClick} disabled={disabled}>
+          M
+        </Menu>
+      </RowHeader>
+      <SpeacialHeader isOpen={isOpen} />
+    </>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
@@ -48,7 +66,9 @@ const Logo = styled.div`
     font-weight: 600;
   }
 `
-const Menu = styled.div`
+const Menu = styled.button`
+  border: none;
+  background: transparent;
   padding: 20px;
   color: white;
   font-weight: 600;
