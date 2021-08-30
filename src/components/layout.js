@@ -8,9 +8,9 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
 import Header from "./header"
 import "./layout.css"
+import { ThemeProvider } from "../context/theme.context"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,10 +24,10 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <Wrapper>
+    <ThemeProvider>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <main>{children}</main>
-    </Wrapper>
+    </ThemeProvider>
   )
 }
 
@@ -36,8 +36,3 @@ Layout.propTypes = {
 }
 
 export default Layout
-
-const Wrapper = styled.div`
-  max-width: 1028px;
-  margin: auto;
-`

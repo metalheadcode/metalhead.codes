@@ -4,10 +4,13 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import SpeacialHeader from "./Header/SpeacialHeader"
 import { useSwitch } from "../hooks/useSwitch"
+import { useTheme } from "../context/theme.context"
 
 const Header = ({ siteTitle }) => {
   const { isOpen, open, close } = useSwitch()
   const [disabled, setDisabled] = React.useState(false)
+  const [dark, setDark] = useTheme()
+
   const handleClick = () => {
     setDisabled(true)
     if (isOpen === false) {
@@ -18,20 +21,25 @@ const Header = ({ siteTitle }) => {
     setTimeout(() => setDisabled(false), 1000)
   }
 
-  console.log(isOpen)
+  const handleTheme = () => {
+    setDark(!dark)
+  }
+
   return (
-    <>
-      <BgHeader />
-      <RowHeader>
+    <Navbar>
+      <Wrapper>
         <Logo>
           <Link to="/">{siteTitle}</Link>
         </Logo>
         <Menu onClick={handleClick} disabled={disabled}>
           M
         </Menu>
-      </RowHeader>
+        <Menu onClick={handleTheme} disabled={disabled}>
+          Change Theme
+        </Menu>
+      </Wrapper>
       <SpeacialHeader isOpen={isOpen} />
-    </>
+    </Navbar>
   )
 }
 
@@ -45,18 +53,17 @@ Header.defaultProps = {
 
 export default Header
 
-const BgHeader = styled.div`
-  position: absolute;
-  left: 0;
+const Navbar = styled.header`
   background-color: black;
-  width: 100vw;
-  height: 56px;
-  z-index: -1;
 `
 
-const RowHeader = styled.div`
+const Wrapper = styled.div`
   display: flex;
+  gap: 100px;
   justify-content: space-between;
+  align-items: center;
+  max-width: 1028px;
+  margin: auto;
 `
 
 const Logo = styled.div`

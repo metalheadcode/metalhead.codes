@@ -54,7 +54,7 @@ const SpeacialHeader = ({ isOpen }) => {
 
   return (
     <ExpandHeaderBody>
-      <Menu ref={expandMenuRef}>
+      <Wrapper ref={expandMenuRef}>
         <MenuGroup>
           <MenuItemBig href="/portfolio">
             <h1 ref={line1} className="text">
@@ -79,8 +79,8 @@ const SpeacialHeader = ({ isOpen }) => {
           <MenuItemSmall onClick={handleExpand}>
             <p className="title">Contact Me</p>
             <p className="description">
-              You could react me at Twitter or maybe you can direct text me thru
-              whatsapp.
+              You could reach me at Twitter or maybe you can direct text me thru
+              whatsapp. Click for more info.
             </p>
           </MenuItemSmall>
           {expandContact && (
@@ -121,7 +121,7 @@ const SpeacialHeader = ({ isOpen }) => {
           metalheadcodes® or Ahmad Hazim. If you face any issues feel free to
           email me at metalheadcoder@gmail.com
         </Small>
-      </Menu>
+      </Wrapper>
     </ExpandHeaderBody>
   )
 }
@@ -130,13 +130,20 @@ export default SpeacialHeader
 
 const ExpandHeaderBody = styled.div`
   z-index: 100;
-  position: relative;
-`
-
-const Menu = styled.div`
+  position: absolute;
   width: 100%;
   background-color: black;
 `
+
+const Wrapper = styled.div`
+  display: flex;
+  gap: 100px;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1028px;
+  margin: auto;
+`
+
 const MenuGroup = styled.div`
   display: grid;
   width: 100%;

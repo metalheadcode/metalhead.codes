@@ -138,14 +138,6 @@ a {
   text-decoration: none;
 }
 
-section {
-  display: flex;
-  gap: 100px;
-  justify-content: space-between;
-  align-items: center;
-  padding: 200px 20px;
-}
-
 body {
   position: relative;
 }

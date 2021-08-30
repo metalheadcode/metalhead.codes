@@ -1,20 +1,29 @@
 import React from "react"
 import styled from "styled-components"
+import { useTheme } from "../../context/theme.context"
+
+// nanti bawak balik masuk section styling from global layout ke dalam ni
+// rasa macam tak cukup modular
 
 const HeroesOne = () => {
+  const [dark] = useTheme()
   return (
-    <Section>
-      <LeftSection>
-        <Title>I Choose Inter</Title>
-        <Description>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus,
-          eum laboriosam? Illo animi distinctio est officiis aliquam vel
-          possimus magnam, nisi cupiditate dicta labore incidunt beatae ut
-          accusantium enim explicabo.
-        </Description>
-        <Button href="http://">Get Started</Button>
-      </LeftSection>
-      <RightCard />
+    <Section dark={dark}>
+      <Wrapper>
+        <LeftSection>
+          <Title>I Choose Inter</Title>
+          <Description dark={dark}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Repellendus, eum laboriosam? Illo animi distinctio est officiis
+            aliquam vel possimus magnam, nisi cupiditate dicta labore incidunt
+            beatae ut accusantium enim explicabo.
+          </Description>
+          <Button dark={dark} href="http://">
+            Get Started
+          </Button>
+        </LeftSection>
+        <RightCard />
+      </Wrapper>
     </Section>
   )
 }
@@ -22,7 +31,17 @@ const HeroesOne = () => {
 export default HeroesOne
 
 const Section = styled.section`
-  /* this section were previously applied with global styling  */
+  padding: 200px 20px;
+`
+
+const Wrapper = styled.div`
+  display: flex;
+  gap: 100px;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1028px;
+  margin: auto;
+
   @media (max-width: 768px) {
     gap: 30px;
     flex-direction: column;
@@ -32,6 +51,7 @@ const Section = styled.section`
     flex-direction: column;
   }
 `
+
 const LeftSection = styled.div`
   width: 100%;
   display: grid;
@@ -41,7 +61,7 @@ const LeftSection = styled.div`
 const RightCard = styled.div`
   width: 100%;
   height: 500px;
-  background-color: red;
+  background-color: black;
 `
 
 const Title = styled.h1`
@@ -54,12 +74,12 @@ const Description = styled.p`
   letter-spacing: -0.43pt;
   font-weight: 400;
   line-height: 130%;
-  color: rgba(0, 0, 0, 0.7);
+  color: ${props => (props.dark ? "rgba(255, 255, 255, 0.7)" : "black")};
 `
 
 const Button = styled.a`
-  background-color: black;
-  color: white;
+  background-color: ${props => (props.dark ? "white" : "black")};
+  color: ${props => (props.dark ? "black" : "white")};
   padding: 15px;
   text-align: center;
 `

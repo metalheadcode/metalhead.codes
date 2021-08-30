@@ -5,39 +5,41 @@ const HeroesTwo = () => {
   return (
     <BgRelative>
       <Section>
-        <LeftSection>
-          <Card>
-            <Title>I Choose Inter</Title>
-            <Description>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Repellendus, eum laboriosam? Illo animi distinctio est officiis
-              aliquam vel possimus magnam, nisi cupiditate dicta labore incidunt
-              beatae ut accusantium enim explicabo.
-            </Description>
-            <Button href="http://">Get Started</Button>
-          </Card>
-          <Card>
-            <Title>I Choose Inter</Title>
-            <Description>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Repellendus, eum laboriosam? Illo animi distinctio est officiis
-              aliquam vel possimus magnam, nisi cupiditate dicta labore incidunt
-              beatae ut accusantium enim explicabo.
-            </Description>
-            <Button href="http://">Get Started</Button>
-          </Card>
-          <Card>
-            <Title>I Choose Inter</Title>
-            <Description>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Repellendus, eum laboriosam? Illo animi distinctio est officiis
-              aliquam vel possimus magnam, nisi cupiditate dicta labore incidunt
-              beatae ut accusantium enim explicabo.
-            </Description>
-            <Button href="http://">Get Started</Button>
-          </Card>
-        </LeftSection>
-        <BigBgImage />
+        <Wrapper>
+          <LeftSection>
+            <Card>
+              <Title>I Choose Inter</Title>
+              <Description>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repellendus, eum laboriosam? Illo animi distinctio est officiis
+                aliquam vel possimus magnam, nisi cupiditate dicta labore
+                incidunt beatae ut accusantium enim explicabo.
+              </Description>
+              <Button href="http://">Get Started</Button>
+            </Card>
+            <Card>
+              <Title>I Choose Inter</Title>
+              <Description>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repellendus, eum laboriosam? Illo animi distinctio est officiis
+                aliquam vel possimus magnam, nisi cupiditate dicta labore
+                incidunt beatae ut accusantium enim explicabo.
+              </Description>
+              <Button href="http://">Get Started</Button>
+            </Card>
+            <Card>
+              <Title>I Choose Inter</Title>
+              <Description>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repellendus, eum laboriosam? Illo animi distinctio est officiis
+                aliquam vel possimus magnam, nisi cupiditate dicta labore
+                incidunt beatae ut accusantium enim explicabo.
+              </Description>
+              <Button href="http://">Get Started</Button>
+            </Card>
+          </LeftSection>
+          <BigBgImage />
+        </Wrapper>
       </Section>
     </BgRelative>
   )
@@ -49,7 +51,17 @@ const BgRelative = styled.div`
   position: relative;
 `
 const Section = styled.section`
-  /* this section were previously applied with global styling  */
+  padding: 200px 20px;
+`
+
+const Wrapper = styled.div`
+  display: flex;
+  gap: 100px;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1028px;
+  margin: auto;
+
   @media (max-width: 768px) {
     gap: 30px;
     flex-direction: column;
@@ -85,7 +97,7 @@ const BigBgImage = styled.div`
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: red;
+  background-color: black;
 `
 
 const Title = styled.h1`
