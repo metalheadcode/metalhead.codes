@@ -10,16 +10,16 @@ const SpeacialHeader = ({ isOpen }) => {
   const line3 = useRef(null)
 
   useEffect(() => {
-    if (isOpen) {
+    if (!isOpen) {
+      // close the menu]
+      staggerRevealClose(line1.current, line2.current, line3.current)
+      gsap.to(expandMenuRef.current, { duration: 1, css: { display: "none" } })
+    } else if (isOpen) {
       gsap.to(expandMenuRef.current, {
         duration: 1,
         css: { display: "block" },
       })
       staggerAnimation(line1.current, line2.current, line3.current)
-    } else {
-      // close the menu]
-      staggerRevealClose(line1.current, line2.current, line3.current)
-      gsap.to(expandMenuRef.current, { duration: 1, css: { display: "none" } })
     }
   }, [isOpen])
 
