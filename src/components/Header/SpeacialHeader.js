@@ -3,76 +3,85 @@ import styled from "styled-components"
 import gsap from "gsap"
 
 const SpeacialHeader = ({ isOpen }) => {
-  const expandMenuRef = useRef(null)
   const [expandContact, setExpandContact] = useState(false)
-  const line1 = useRef(null)
-  const line2 = useRef(null)
-  const line3 = useRef(null)
+  const [wrapperHeight, setWrapperHeight] = useState(1135)
+  // const line1 = useRef(null)
+  // const line2 = useRef(null)
+  // const line3 = useRef(null)
+  const expandMenuRef = useRef(null)
+  const wrapperRef = useRef(null)
 
   useEffect(() => {
-    if (!isOpen) {
-      // close the menu]
-      staggerRevealClose(line1.current, line2.current, line3.current)
-      gsap.to(expandMenuRef.current, { duration: 1, css: { display: "none" } })
-    } else if (isOpen) {
-      gsap.to(expandMenuRef.current, {
-        duration: 1,
-        css: { display: "block" },
+    if (isOpen) {
+      // staggerAnimation(line1.current,line2.current, line3.current)
+      gsap.to(wrapperRef.current, {
+        y: wrapperHeight,
+        ease: "Power3.easeOut",
       })
-      staggerAnimation(line1.current, line2.current, line3.current)
+    } else if (!isOpen) {
+      // staggerRevealClose(line1.current,line2.current, line3.current)
+      gsap.to(wrapperRef.current, {
+        y: 0,
+        ease: "Power3.easeOut",
+      })
     }
-  }, [isOpen])
 
-  const staggerAnimation = (node1, node2, node3) => {
-    gsap.from([node1, node2, node3], {
-      duration: 0.8,
-      height: 0,
-      transformOrigin: "right top",
-      skewY: 60,
-      ease: "power3.inOut",
-      stagger: {
-        amount: 0.1,
-      },
-    })
-  }
+    setWrapperHeight(wrapperRef.current.offsetHeight)
+  }, [wrapperHeight, isOpen])
+
+  // const staggerAnimation = (node1, node2, node3) => {
+  //   gsap.from([node1, node2, node3], {
+  //     duration: 0.8,
+  //     height: 0,
+  //     transformOrigin: "right top",
+  //     skewY: 60,
+  //     ease: "power3.inOut",
+  //     stagger: {
+  //       amount: 0.1,
+  //     },
+  //   })
+  // }
 
   // CLOSE MENU
-  const staggerRevealClose = (node1, node2, node3) => {
-    gsap.to([node1, node2, node3], {
-      duration: 0.8,
-      height: 0,
-      ease: "power3.inOut",
-      stagger: {
-        amount: 0.07,
-      },
-    })
-  }
+  // const staggerRevealClose = (node1, node2, node3) => {
+  //   gsap.to([node1, node2, node3], {
+  //     height: 0,
+  //     duration: 0.8,
+  //     ease: "power3.inOut",
+  //     stagger: {
+  //       amount: 0.07,
+  //     },
+  //   })
+  // }
 
   const handleExpand = () => {
     setExpandContact(!expandContact)
   }
 
+  console.log("Wrapper height", wrapperHeight)
+
   return (
-    <ExpandHeaderBody>
-      <Wrapper ref={expandMenuRef}>
+    <ExpandHeaderBody ref={expandMenuRef}>
+      <Wrapper ref={wrapperRef} style={{ top: `-${wrapperHeight + 56}px` }}>
         <MenuGroup>
-          <MenuItemBig href="/portfolio">
-            <h1 ref={line1} className="text">
-              Portfolio
-            </h1>
+          <MenuItemBig>
+            <a href="/portfolio">
+              <h1 className="text">Portfolio</h1>
+            </a>
           </MenuItemBig>
-          <MenuItemBig
-            href="https://www.linkedin.com/in/ahmad-hazim-ahmad-fuad-40702617/"
-            target="_blank"
-          >
-            <h1 ref={line2} className="text">
-              LinkedIn
-            </h1>
+          <MenuItemBig>
+            <a
+              href="https://www.linkedin.com/in/ahmad-hazim-ahmad-fuad-40702617/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <h1 className="text">LinkedIn</h1>
+            </a>
           </MenuItemBig>
-          <MenuItemBig href="/contact-me">
-            <h1 ref={line3} className="text">
-              Past Experience
-            </h1>
+          <MenuItemBig>
+            <a href="/contact-me">
+              <h1 className="text">Past Experience</h1>
+            </a>
           </MenuItemBig>
         </MenuGroup>
         <MenuGroup>
@@ -129,19 +138,19 @@ const SpeacialHeader = ({ isOpen }) => {
 export default SpeacialHeader
 
 const ExpandHeaderBody = styled.div`
-  z-index: 100;
-  position: absolute;
+  position: relative;
+  margin: 0;
+  padding: 0;
   width: 100%;
-  background-color: black;
 `
 
 const Wrapper = styled.div`
-  display: flex;
-  gap: 100px;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1028px;
-  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: black;
+  margin: 56px 0 0 0;
 `
 
 const MenuGroup = styled.div`
@@ -156,14 +165,14 @@ const MenuGroup = styled.div`
   }
 `
 
-const MenuItemBig = styled.a`
+const MenuItemBig = styled.div`
   cursor: pointer;
   overflow: hidden;
-  height: 112px;
+  height: 100%;
   .text {
     color: white;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke-width: 1px; /* 1px Stroke */
+    -webkit-text-stroke-width: 1px;
     font-weight: 600;
     font-size: 72px;
     padding: 20px;
