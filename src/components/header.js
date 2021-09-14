@@ -26,20 +26,22 @@ const Header = ({ siteTitle }) => {
   }
 
   return (
-    <Navbar>
-      <Wrapper>
-        <Logo>
-          <Link to="/">{siteTitle}</Link>
-        </Logo>
-        <Menu onClick={handleClick} disabled={disabled}>
-          M
-        </Menu>
-        <Menu onClick={handleTheme} disabled={disabled}>
-          Change Theme
-        </Menu>
-      </Wrapper>
+    <>
+      <Navbar>
+        <Wrapper>
+          <Logo>
+            <Link to="/">{siteTitle}</Link>
+          </Logo>
+          <Menu onClick={handleClick} disabled={disabled}>
+            M
+          </Menu>
+          <Menu onClick={handleTheme} disabled={disabled}>
+            Change Theme
+          </Menu>
+        </Wrapper>
+      </Navbar>
       <SpeacialHeader isOpen={isOpen} />
-    </Navbar>
+    </>
   )
 }
 
@@ -54,7 +56,9 @@ Header.defaultProps = {
 export default Header
 
 const Navbar = styled.header`
-  background-color: black;
+  position: relative;
+  z-index: 4;
+  background: black;
 `
 
 const Wrapper = styled.div`
