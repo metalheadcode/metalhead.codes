@@ -1,16 +1,18 @@
 import * as React from "react"
 import Seo from "../components/seo"
 import Layout from "../components/layout"
-import HeroesOne from "../components/Heroes/HeroesOne"
-import HeroesTwo from "../components/Heroes/HeroesTwo"
-import ParallexOne from "../components/Parallex/ParallexOne"
+// import HeroesOne from "../components/Heroes/HeroesOne"
+// import HeroesTwo from "../components/Heroes/HeroesTwo"
+// import ParallexOne from "../components/Parallex/ParallexOne"
+import CaseStudies from "../components/Sections/CaseStudies"
 
 const IndexPage = () => (
   <Layout>
     <Seo title="Home" />
-    <ParallexOne />
+    <CaseStudies />
+    {/* <ParallexOne />
     <HeroesOne />
-    <HeroesTwo />
+    <HeroesTwo /> */}
   </Layout>
 )
 
