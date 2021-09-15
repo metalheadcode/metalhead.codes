@@ -4,12 +4,12 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import SpeacialHeader from "./Header/SpeacialHeader"
 import { useSwitch } from "../hooks/useSwitch"
-import { useTheme } from "../context/theme.context"
+// import { useTheme } from "../context/theme.context"
 
 const Header = ({ siteTitle }) => {
   const { isOpen, open, close } = useSwitch()
   const [disabled, setDisabled] = React.useState(false)
-  const [dark, setDark] = useTheme()
+  // const [dark, setDark] = useTheme()
 
   const handleClick = () => {
     setDisabled(true)
@@ -21,9 +21,9 @@ const Header = ({ siteTitle }) => {
     setTimeout(() => setDisabled(false), 1000)
   }
 
-  const handleTheme = () => {
-    setDark(!dark)
-  }
+  // const handleTheme = () => {
+  //   setDark(!dark)
+  // }
 
   return (
     <>
@@ -35,9 +35,9 @@ const Header = ({ siteTitle }) => {
           <Menu onClick={handleClick} disabled={disabled}>
             M
           </Menu>
-          <Menu onClick={handleTheme} disabled={disabled}>
+          {/* <Menu onClick={handleTheme} disabled={disabled}>
             Change Theme
-          </Menu>
+          </Menu> */}
         </Wrapper>
       </Navbar>
       <SpeacialHeader isOpen={isOpen} />
@@ -66,7 +66,6 @@ const Wrapper = styled.div`
   gap: 100px;
   justify-content: space-between;
   align-items: center;
-  max-width: 1028px;
   margin: auto;
 `
 
