@@ -65,11 +65,6 @@ const SpeacialHeader = ({ isOpen }) => {
       <Wrapper ref={wrapperRef} style={{ top: `-${wrapperHeight + 56}px` }}>
         <MenuGroup>
           <MenuItemBig>
-            <a href="/portfolio">
-              <h1 className="text">Portfolio</h1>
-            </a>
-          </MenuItemBig>
-          <MenuItemBig>
             <a
               href="https://www.linkedin.com/in/ahmad-hazim-ahmad-fuad-40702617/"
               target="_blank"
@@ -79,8 +74,12 @@ const SpeacialHeader = ({ isOpen }) => {
             </a>
           </MenuItemBig>
           <MenuItemBig>
-            <a href="/contact-me">
-              <h1 className="text">Past Experience</h1>
+            <a
+              href="https://github.com/metalheadcode"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <h1 className="text">Github</h1>
             </a>
           </MenuItemBig>
         </MenuGroup>
