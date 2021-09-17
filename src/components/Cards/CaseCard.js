@@ -2,51 +2,44 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 
-const CaseCard = ({ data }) => {
+const CaseCard = ({ data, bg, color }) => {
   // designer,
   // year,
   // location,
   // link,
   // desc,
   return (
-    <CaseCardItem>
-      <CardTitle>{data.id}</CardTitle>
-      <Divider />
+    <CaseCardItem color={color}>
+      <CardTitle>{data.originalId}</CardTitle>
+      <Divider color={color} />
       <Item>
         <SubItemLeft>Designer</SubItemLeft>
         <SubItemRight>{data.designer}</SubItemRight>
       </Item>
-      <Divider />
+      <Divider color={color} />
       <Item>
-        <SubItemLeft>Year</SubItemLeft>
-        <SubItemRight>{data.year}</SubItemRight>
+        <SubItemLeft>Date</SubItemLeft>
+        <SubItemRight>{data.date}</SubItemRight>
       </Item>
-      <Divider />
-      <Item>
+      <Divider color={color} />
+      {/* <Item>
         <SubItemLeft>Location</SubItemLeft>
         <SubItemRight>{data.location}</SubItemRight>
       </Item>
-      <Divider />
+      <Divider color={color} /> */}
       <Item>
-        <SubItemLeft>https://</SubItemLeft>
+        <SubItemLeft>Web</SubItemLeft>
         <SubItemRight>
-          <a href={`https://` + data.link} target="_blank" rel="noreferrer">
+          <a href={data.link} target="_blank" rel="noreferrer">
             {data.link}
           </a>
         </SubItemRight>
       </Item>
-      <Divider />
+      <Divider color={color} />
       <p>Description</p>
-      <Description>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet sit fugiat
-        magni quibusdam tempora quo et doloribus culpa iusto ex ipsum
-        reprehenderit perferendis repellendus dolores odio debitis dolorem
-        soluta corporis sequi hic, suscipit corrupti. Consequatur esse aliquam
-        reprehenderit nobis pariatur adipisci, harum tenetur molestias saepe
-        fugiat voluptatum nulla ex temporibus.
-      </Description>
-      <Divider />
-      <Link to="#">Click Here</Link>
+      <Description>{data.description}</Description>
+      {/* <Divider color={color} />
+      <Link to="#">Click Here</Link> */}
     </CaseCardItem>
   )
 }
@@ -54,20 +47,22 @@ const CaseCard = ({ data }) => {
 export default CaseCard
 
 const CaseCardItem = styled.div`
-  color: white;
+  color: ${props => props.color};
   display: grid;
   padding: 10px;
   gap: 10px;
-  /* border: 1px solid white; */
+  border: 1px dotted ${props => props.color};
+  border-radius: 7px;
 
   a {
-    color: white;
+    color: ${props => props.color};
   }
 `
 
 const Divider = styled.div`
   height: 0.5px;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: ${props => props.color};
+  opacity: 0.15;
 `
 
 const Item = styled.div`
@@ -94,6 +89,6 @@ const Description = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  line-clamp: 3;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-box-orient: vertical;
 `
