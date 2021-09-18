@@ -42,8 +42,6 @@ const BigTitle = styled.h1`
 
   @media (max-width: 500px) {
     font-size: 64pt;
-    padding-top: 64px;
-    padding-bottom: 64px;
   }
 `
 const CardGrid = styled.div`

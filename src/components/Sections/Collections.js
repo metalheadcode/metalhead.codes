@@ -47,20 +47,18 @@ const Section = styled.section`
 `
 const Wrapper = styled.div``
 
-const BigTitle = styled.h1`
+const BigTitle = styled.div`
   padding-top: 64px;
   padding-bottom: 64px;
   word-break: break-all;
-
-  @media (max-width: 500px) {
-    font-size: 64pt;
-    padding-top: 64px;
-    padding-bottom: 64px;
-  }
 `
 const Title = styled.h1`
   font-size: 110pt;
   font-weight: 700;
+
+  @media (max-width: 500px) {
+    font-size: 64pt;
+  }
 `
 const SectionDescription = styled.p`
   padding-top: 20px;
