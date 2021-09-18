@@ -54,14 +54,17 @@ const CardGrid = styled.div`
   @media (max-width: 1920px) {
     grid-template-columns: repeat(5, auto);
   }
-  @media (max-width: 1440px) {
-    grid-template-columns: repeat(3, auto);
+  @media (max-width: 1620px) {
+    grid-template-columns: repeat(4, auto);
   }
   @media (max-width: 1440px) {
     grid-template-columns: repeat(3, auto);
+  }
+  @media (max-width: 970px) {
+    grid-template-columns: repeat(2, auto);
   }
   @media (max-width: 710px) {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(1, auto);
   }
   @media (max-width: 500px) {
     grid-template-columns: auto;
