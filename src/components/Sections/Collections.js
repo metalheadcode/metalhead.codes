@@ -16,6 +16,7 @@ const Collections = ({ collections }) => {
             <a
               href="https://api.whatsapp.com/send?phone=60168532998"
               target="_blank"
+              rel="noreferrer"
             >
               Whatsapp
             </a>{" "}
@@ -61,7 +62,7 @@ const Title = styled.h1`
   }
 `
 const SectionDescription = styled.p`
-  padding-top: 20px;
+  padding: 20px 10px;
   max-width: 800px;
   line-height: 140%;
 
