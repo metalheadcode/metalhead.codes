@@ -67,10 +67,6 @@ const SubItemRight = styled.p`
   white-space: nowrap;
 `
 
-const CardTitle = styled.h1`
-  font-weight: 300;
-  font-size: 64px;
-`
 const Description = styled.p`
   line-height: 130%;
   overflow: hidden;

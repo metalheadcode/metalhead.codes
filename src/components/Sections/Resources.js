@@ -18,7 +18,7 @@ const Resources = ({ resources }) => {
           </SectionDescription>
         </BigTitle>
         <Swiper
-          slidesPerView={6}
+          slidesPerView={1}
           spaceBetween={15}
           navigation={true}
           breakpoints={{
@@ -40,10 +40,6 @@ const Resources = ({ resources }) => {
             },
             710: {
               slidesPerView: 2,
-              spaceBetween: 15,
-            },
-            500: {
-              slidesPerView: 1,
               spaceBetween: 15,
             },
           }}
