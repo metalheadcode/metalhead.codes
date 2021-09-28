@@ -7,7 +7,13 @@ const CaseStudies = ({ caseStudies }) => {
   return (
     <Section>
       <Wrapper>
-        <BigTitle>Case Studies</BigTitle>
+        <BigTitle>
+          <Title>Case Studies</Title>
+
+          <SectionDescription>
+            Case studies is a collection website that I find interesting to try.
+          </SectionDescription>
+        </BigTitle>
         <CardGrid>
           {caseStudiesData.map(data => (
             <CaseCard
@@ -33,17 +39,32 @@ const Section = styled.section`
 `
 const Wrapper = styled.div``
 
-const BigTitle = styled.h1`
+const BigTitle = styled.div`
+  padding-top: 64px;
+  /* padding-bottom: 64px; */
+  word-break: break-all;
+`
+
+const Title = styled.h1`
   font-size: 110pt;
   font-weight: 700;
-  padding-top: 64px;
-  padding-bottom: 64px;
-  word-break: break-all;
 
   @media (max-width: 500px) {
     font-size: 64pt;
   }
 `
+const SectionDescription = styled.p`
+  padding: 20px 10px;
+  max-width: 800px;
+  line-height: 140%;
+
+  a {
+    text-decoration: underline;
+    color: yellow;
+    font-weight: bold;
+  }
+`
+
 const CardGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(6, auto);
