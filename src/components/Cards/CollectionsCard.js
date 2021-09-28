@@ -69,6 +69,13 @@ const SubItemRight = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  a {
+    transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    &:hover {
+      color: yellow;
+    }
+  }
 `
 
 const Description = styled.p`
