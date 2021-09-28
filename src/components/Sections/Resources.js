@@ -1,10 +1,10 @@
 import React from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
-import SwiperCore, { Navigation } from "swiper"
+import SwiperCore, { Navigation, Pagination } from "swiper"
 import styled from "styled-components"
 import ResourcesCard from "../Cards/ResourcesCard"
 
-SwiperCore.use([Navigation])
+SwiperCore.use([Navigation, Pagination])
 
 const Resources = ({ resources }) => {
   console.log("Resources", resources)
@@ -21,6 +21,7 @@ const Resources = ({ resources }) => {
           slidesPerView={1}
           spaceBetween={15}
           navigation={true}
+          pagination={true}
           breakpoints={{
             1920: {
               slidesPerView: 6,
@@ -68,6 +69,19 @@ const Section = styled.section`
   padding: 15px;
 `
 const Wrapper = styled.div`
+  .swiper-wrapper {
+    margin-bottom: 20px;
+  }
+  /* .swiper-paggination {
+    to
+    bottom: 0;
+  } */
+  .swiper-pagination-bullets {
+    padding: white;
+  }
+  .swiper-pagination-bullet {
+    background: white;
+  }
   .swiper-button-prev {
     opacity: 0.2;
     transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -89,7 +103,7 @@ const Wrapper = styled.div`
 
 const BigTitle = styled.div`
   padding-top: 64px;
-  padding-bottom: 64px;
+  /* padding-bottom: 64px; */
   word-break: break-all;
 `
 const Title = styled.h1`

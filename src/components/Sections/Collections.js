@@ -50,7 +50,7 @@ const Wrapper = styled.div``
 
 const BigTitle = styled.div`
   padding-top: 64px;
-  padding-bottom: 64px;
+  /* padding-bottom: 64px; */
   word-break: break-all;
 `
 const Title = styled.h1`
