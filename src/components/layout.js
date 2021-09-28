@@ -11,7 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 import "swiper/css"
-// import "swiper/css/pagination"
+import "swiper/css/pagination"
 import "swiper/css/navigation"
 import { ThemeProvider } from "../context/theme.context"
 
